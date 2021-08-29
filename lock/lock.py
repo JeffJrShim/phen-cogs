@@ -119,6 +119,9 @@ class Lock(commands.Cog):
 
         msg = ""
         if succeeded:
+            lock=discord.Embed(title="<a:redsiren:859362851856449546> Channel Locked <a:redsiren:859362851856449546>", description="This channel is locked. More info will be sent into this channel later. Please be patient, and do not whine about this in staff's DM's or in other channels. You are not muted.\n To revert this, run `{}unlock`".format(ctx.prefix), color=0xe74c3c)
+            embed.add_field(name="Locked by: ", value="{}".format(ctx.author.mention), inline=True)
+            await ctx.send(embed=lock)
             msg += f"{channel.mention} has been locked for {humanize_list(succeeded)}.\n"
         if cancelled:
             msg += f"{channel.mention} was already locked for {humanize_list(cancelled)}.\n"
@@ -169,6 +172,7 @@ class Lock(commands.Cog):
 
         msg = ""
         if succeeded:
+            
             msg += f"{channel.mention} has been viewlocked for {humanize_list(succeeded)}.\n"
         if cancelled:
             msg += f"{channel.mention} was already viewlocked for {humanize_list(cancelled)}.\n"
